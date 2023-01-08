@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const helmet = require('helmet');
 const limiter = require('./middlewares/rateLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -15,6 +16,22 @@ const {
 
 const { PORT = PORT_NUMBER } = process.env;
 const app = express();
+
+const options = {
+  origin: [
+    'http://localhost:3001',
+    'https://movies-front.nomoredomains.club',
+    'http://movies-front.nomoredomains.club',
+    'https://anaserg.github.io',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+app.use('*', cors(options));
 
 mongoose.set('strictQuery', false);
 mongoose.connect(MONGO_ADDRESS, {
