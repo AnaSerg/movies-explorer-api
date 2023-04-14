@@ -17,7 +17,6 @@ const {
 const { PORT = PORT_NUMBER } = process.env;
 const app = express();
 
-/*
 const options = {
   origin: [
     'http://localhost:3001',
@@ -33,9 +32,6 @@ const options = {
 };
 
 app.use('*', cors(options));
-
- */
-app.use(cors());
 
 mongoose.set('strictQuery', false);
 mongoose.connect(MONGO_ADDRESS, {
