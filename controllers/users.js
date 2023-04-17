@@ -41,7 +41,7 @@ module.exports.createUser = (req, res, next) => {
         return next(new ConflictError('Пользователь с таким email уже существует'));
       }
       if (err.name === 'ValidationError') {
-        return next(new BadRequestError('Переданы некорректные данные при создании пользователя.'));
+        return next(new BadRequestError('При регистрации пользователя произошла ошибка.'));
       }
       return next(err);
     });
@@ -85,6 +85,6 @@ module.exports.login = (req, res, next) => {
       res.send({ token });
     })
     .catch(() => {
-      next(new UnauthorizedError('Неправильные почта или пароль'));
+      next(new UnauthorizedError('Вы ввели неправильный логин или пароль.'));
     });
 };
