@@ -1,8 +1,7 @@
-# movies-explorer-api
+# API для сервиса Movies Explorer
 
-### Адреса
-- IP 158.160.52.81
-- Домен https://movies-front.nomoredomains.club
+### Стек
+Node.js, Express.js, winston
 
-### Ссылка на репозиторий
-https://github.com/AnaSerg/movies-explorer-api
+Ссылка на репозиторий с фронтендом - https://github.com/AnaSerg/movies-explorer-frontend
+Ссылка на готовый проект - https://movies-front.nomoredomains.club/
